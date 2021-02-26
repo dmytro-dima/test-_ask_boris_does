@@ -1,0 +1,43 @@
+.container-table{
+  small{
+    float: right;
+  }
+  .table{
+    .th-time, .td-time {
+      width: 135px;
+    }
+  }
+}
+
+.sort-btn-floating{
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .table{
+    .td-title{
+      a{
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        line-height: 1.3em;
+        height: 3.9em;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .th-time, .td-time, .th-domain, .td-domain {
+    display: none;
+  }
+  .sort-btn-floating {
+    display: block;
+    #button-floating{
+      right: 1rem;
+      top: 90vh;
+    }
+  }
+}
