@@ -9,10 +9,6 @@
   }
 }
 
-.sort-btn-floating{
-  display: none;
-}
-
 @media screen and (max-width: 768px) {
   .table{
     .td-title{
@@ -32,12 +28,5 @@
 @media screen and (max-width: 600px) {
   .th-time, .td-time, .th-domain, .td-domain {
     display: none;
-  }
-  .sort-btn-floating {
-    display: block;
-    #button-floating{
-      right: 1rem;
-      top: 90vh;
-    }
   }
 }

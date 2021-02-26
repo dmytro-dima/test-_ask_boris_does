@@ -1,5 +1,5 @@
 import React, {useEffect, useReducer, useState} from 'react';
-import './App.scss';
+// import './index.scss';
 import {reducer} from "./store/reducer";
 import {initialState} from "./store/initialState";
 import {fetchNews} from "./store/actions";

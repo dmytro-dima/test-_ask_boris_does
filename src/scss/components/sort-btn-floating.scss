@@ -1,0 +1,13 @@
+.sort-btn-floating{
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .sort-btn-floating {
+    display: block;
+    #button-floating{
+      right: 1rem;
+      top: 90vh;
+    }
+  }
+}
