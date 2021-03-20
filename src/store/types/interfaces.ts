@@ -1,35 +1,40 @@
 import * as types from "./actions-types";
 
-export interface News {
-  id: number;
-  title: string;
-  points?: number | null;
-  user?: string | null;
-  time: number;
-  time_ago: string;
-  comments_count: number;
-  type: string;
-  url?: string;
-  domain?: string;
+export interface Personages {
+  birth_year: string,
+  created: string,
+  name: string,
+  gender: string
+}
+
+export interface Comment {
+  userId: string,
+  comment: string,
+  created: any
+}
+
+export interface Data {
+  "count": number,
+  "results": Personages[],
 }
 
 export interface StateInterface {
   errMess: string | null;
-  news: News[];
+  personages: Personages[];
   loading: boolean;
   sortType:  'asc' | 'desc',
-  typeField: string,
-  feed: string
+  count: number,
+  comments: Comment[],
 }
 
-export interface setNewsAction {
-  type: typeof types.LOADING_NEWS;
+export interface setPersonagesAction {
+  type: typeof types.LOADING_PERSONAGES;
   payload: boolean;
 }
 
-export interface loadingNewsAction {
-  type: typeof types.SET_NEWS;
-  payload: [];
+export interface loadingPersonagesAction {
+  type: typeof types.SET_PERSONAGES;
+  payload: Data;
 }
 
 export interface failedFetchAction {
@@ -37,16 +42,23 @@ export interface failedFetchAction {
   payload: string;
 }
 
-export interface sortNewsAction {
-  type: typeof types.SORT_NEWS;
+export interface sortPersonagesAction {
+  type: typeof types.SORT_PERSONAGES;
   payload: string;
 }
 
-export interface selectFeedAction {
-  type: typeof types.SELECT_FEED;
+export interface addCommentAction {
+  type: typeof types.ADD_COMMENT;
+  payload: Comment;
+}
+
+export interface deleteCommentAction {
+  type: typeof types.DELETE_COMMENT;
   payload: string;
 }
 
-export type TaskActionTypes = loadingNewsAction | failedFetchAction | setNewsAction | sortNewsAction | selectFeedAction;
+export type CommentsActionTypes = addCommentAction | deleteCommentAction
 
-export type AppAction = TaskActionTypes;
+export type PersonagesActionTypes = setPersonagesAction | failedFetchAction | loadingPersonagesAction  | sortPersonagesAction ;
+
+export type AppAction = CommentsActionTypes | PersonagesActionTypes;

@@ -1,32 +1,26 @@
-.container-table{
-  small{
+.container-personages {
+  small {
     float: right;
   }
-  .table{
-    .th-time, .td-time {
-      width: 135px;
-    }
+  .card{
+    width: 30%;
+    height: fit-content
   }
 }
 
 @media screen and (max-width: 768px) {
-  .table{
-    .td-title{
-      a{
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        line-height: 1.3em;
-        height: 3.9em;
-      }
+  .container-personages {
+    .card{
+      width: 45%;
     }
   }
 }
 
 
-@media screen and (max-width: 600px) {
-  .th-time, .td-time, .th-domain, .td-domain {
-    display: none;
+@media screen and (max-width: 425px) {
+  .container-personages {
+    .card{
+      width: 100%;
+    }
   }
 }

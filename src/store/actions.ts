@@ -1,20 +1,21 @@
 import * as types from "./types/actions-types";
-import {AppAction} from "./types/interfaces";
+import {AppAction, Data, Comment} from "./types/interfaces";
+import axios from "axios";
 
-export const fetchNews = (dispatch: any, step: number, feed: string) => {
-    loadingNews(true)
-    return fetch(`https://api.hnpwa.com/v0/${feed}/${step}.json`)
-        .then((response) => response.json())
-        .then((data: []) => {
-            dispatch(setNews(data))
+export const fetchPersonages = (dispatch: any, step: number) => {
+    loadingPersonages(true)
+    return axios.get(`https://swapi.dev/api/people/?page=${step}`)
+        .then((response) => response.data)
+        .then((data: Data) => {
+            dispatch(setPersonages(data))
         })
         .catch((error) => {
             dispatch(fetchFailed(error.message));
         });
 };
 
-const loadingNews = (stage: boolean): AppAction => ({
-    type: types.LOADING_NEWS,
+const loadingPersonages = (stage: boolean): AppAction => ({
+    type: types.LOADING_PERSONAGES,
     payload: stage,
 });
 
@@ -23,21 +24,27 @@ const fetchFailed = (errMess: string): AppAction => ({
     payload: errMess,
 });
 
-const setNews = (images: []): AppAction => ({
-    type: types.SET_NEWS,
+const setPersonages = (images: Data): AppAction => ({
+    type: types.SET_PERSONAGES,
     payload: images,
 });
 
-export const sortNews = (dispatch: any, type: string) => {
+export const sortPersonages = (type: string, dispatch: any) => {
     dispatch({
-        type: types.SORT_NEWS,
+        type: types.SORT_PERSONAGES,
         payload: type,
     });
 }
-
-export const SelectFeed = (dispatch: any, type: string) => {
+export const addComment = (comment: Comment, dispatch: any)=> {
     dispatch({
-        type: types.SELECT_FEED,
-        payload: type,
+        type: types.ADD_COMMENT,
+        payload: comment,
+    });
+}
+
+export const deleteComment = (commentId: string, dispatch: any)=> {
+    dispatch({
+        type: types.DELETE_COMMENT,
+        payload: commentId,
     });
 }

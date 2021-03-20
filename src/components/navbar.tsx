@@ -1,25 +1,18 @@
 import React from 'react';
-import {SelectFeedsItem} from "./select-feeds-item";
-
-interface NavbarProps {
-    setPage: (page: number) => void
-}
+import {SelectSort} from "./select-sort";
 
 
-export const Navbar: React.FC<NavbarProps> = ({setPage}) => {
+export const Navbar: React.FC = () => {
     return (
         <nav className="navbar navbar-light bg-light mb-5">
             <div className="container-fluid">
                 <div className="navbar-brand d-flex mt-auto mb-auto">
-                   <i className='material-icons'>auto_stories</i>
-                    <p className="h4  mx-2">News</p>
+                    <p className="h4  mx-2">Personages</p>
                 </div>
-                <SelectFeedsItem setPage={setPage}/>
+                <SelectSort/>
             </div>
         </nav>
     );
 }
-
-
 
 

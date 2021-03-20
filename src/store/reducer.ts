@@ -9,19 +9,22 @@ export const reducer = (
   action: AppAction
 ): StateInterface => {
   switch (action.type) {
-    case types.LOADING_NEWS:
+    case types.LOADING_PERSONAGES:
       return { ...state, loading: action.payload};
-    case types.SET_NEWS:
-      return { ...state, errMess: null, news: _.orderBy(state.news.concat(action.payload), state.typeField, state.sortType) , loading: false };
+    case types.SET_PERSONAGES:
+      return { ...state, errMess: null, personages: _.orderBy(state.personages.concat(action.payload.results), 'name', state.sortType) , count: action.payload.count,  loading: false };
     case types.FETCH_FAILED:
       return { ...state, errMess: action.payload };
-    case types.SORT_NEWS:
+    case types.ADD_COMMENT:
+      return { ...state, comments: state.comments.concat(action.payload) };
+    case types.DELETE_COMMENT:
+      return { ...state, comments: state.comments.filter(c => c.created !== action.payload)};
+    case types.SORT_PERSONAGES:
       const sortType = state.sortType === 'asc' ? 'desc' : 'asc'
-      const typeField = action.payload
-      return { ...state, news: _.orderBy(state.news, typeField, sortType), loading: false, sortType, typeField };
-    case types.SELECT_FEED:
-      return { ...state, feed: action.payload, news: []}
+      return { ...state, personages: _.orderBy(state.personages, 'name', sortType), loading: false, sortType, };
     default:
       return state;
   }
 };
+
+

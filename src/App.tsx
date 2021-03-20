@@ -1,11 +1,9 @@
 import React, {useEffect, useReducer, useState} from 'react';
-// import './index.scss';
 import {reducer} from "./store/reducer";
 import {initialState} from "./store/initialState";
-import {fetchNews} from "./store/actions";
+import {fetchPersonages} from "./store/actions";
 import { ContextApp } from "./context/context"
-import {Table} from "./components/table";
-import {SortBtnFloating} from "./components/sort-btn-floating";
+import {Personages} from "./components/personages";
 import {Navbar} from "./components/navbar";
 
 function App() {
@@ -14,15 +12,14 @@ function App() {
 
 
     useEffect(() => {
-        fetchNews(dispatch, page, state.feed)
-    }, [page, state.feed]);
+        fetchPersonages(dispatch, page)
+    }, [page]);
 
     return (
         <ContextApp.Provider value={{ state, dispatch }}>
-            <Navbar setPage={setPage}/>
+            <Navbar/>
             <div className="App">
-                <SortBtnFloating/>
-                <Table setPage={setPage} page={page}/>
+                <Personages setPage={setPage} page={page}/>
             </div>
         </ContextApp.Provider>
     );

@@ -2,9 +2,9 @@ import { StateInterface } from "./types/interfaces";
 
 export const initialState: StateInterface = {
   errMess: null,
-  news: [],
+  personages: [],
   loading: false,
   sortType: 'asc',
-  typeField: 'time',
-  feed: 'news'
+  count: 0,
+  comments: []
 };
